@@ -1,18 +1,17 @@
-name: Docker Image CI
+FROM python:3.12-slim
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+WORKDIR /app
 
-jobs:
+# Install Python dependencies
+COPY requirements.txt .
 
-  build:
+RUN pip install --no-cache-dir -r requirements.txt
 
-    runs-on: ubuntu-latest
+# Copy application code
+COPY app ./app
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+# Expose FastAPI port
+EXPOSE 8000
+
+# Start the API
+CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]
