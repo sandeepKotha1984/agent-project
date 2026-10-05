@@ -8,12 +8,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check files
+        run: |
+          pwd
+          ls -la
+          echo "----- app -----"
+          find app -maxdepth 2 -type f | sort
+
       - name: Build Docker image
         run: |
-          docker build -t trip-planner:latest .
+          docker build \
+            --file Dockerfile \
+            --tag trip-planner:latest \
+            .
