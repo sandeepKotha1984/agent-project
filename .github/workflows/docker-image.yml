@@ -1,17 +1,19 @@
-FROM python:3.12-slim
+name: Docker Image CI
 
-WORKDIR /app
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
-# Install Python dependencies
-COPY requirements.txt .
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-RUN pip install --no-cache-dir -r requirements.txt
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-# Copy application code
-COPY app ./app
-
-# Expose FastAPI port
-EXPOSE 8000
-
-# Start the API
-CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]
+      - name: Build Docker image
+        run: |
+          docker build -t trip-planner:latest .
