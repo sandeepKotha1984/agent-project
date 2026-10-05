@@ -1,1 +1,67 @@
+# =========================
+# LangChain / LangGraph
+# =========================
+langchain
+langchain-core
+langchain-community
+langchain-ollama
+langgraph
 
+# =========================
+# LLM / Local Models
+# =========================
+ollama
+sentence-transformers
+transformers
+huggingface-hub
+
+# =========================
+# RAG / Embeddings
+# =========================
+numpy
+scikit-learn
+
+# =========================
+# Vector Database
+# =========================
+qdrant-client
+
+# =========================
+# Retrieval
+# =========================
+rank-bm25
+
+# =========================
+# Document Processing
+# =========================
+python-docx
+docx2txt
+
+# =========================
+# Database
+# =========================
+SQLAlchemy
+PyMySQL
+greenlet
+
+# =========================
+# Reranking
+# =========================
+haystack-ai
+
+# =========================
+# API / Backend
+# =========================
+fastapi
+uvicorn
+
+# =========================
+# Configuration
+# =========================
+python-dotenv
+
+# =========================
+# Observability / Evaluation
+# =========================
+langsmith
+pydantic
